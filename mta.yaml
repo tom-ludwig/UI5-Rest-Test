@@ -1,0 +1,78 @@
+_schema-version: "3.2"
+ID: com.sap.ui5datatest
+version: 0.0.1
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm install
+        - npm run build:workspaces
+modules:
+  - name: com.sap.ui5datatest-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: com.sap.ui5datatest-auth
+      - name: com.sap.ui5datatest-html-repo-host
+      - name: com.sap.ui5datatest-destination-service
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        instance:
+          existing_destinations_policy: update
+          destinations:
+            - Name: com.sap.ui5datatest-html-repo-host
+              ServiceInstanceName: com.sap.ui5datatest-html-repo-host
+              ServiceKeyName: com.sap.ui5datatest-html-repo-host-key
+              sap.cloud.service: basic.service
+            - Name: com.sap.ui5datatest-auth
+              ServiceInstanceName: com.sap.ui5datatest-auth
+              ServiceKeyName: com.sap.ui5datatest-auth-key
+              sap.cloud.service: basic.service
+              Authentication: OAuth2UserTokenExchange
+    build-parameters:
+      no-source: true
+  - name: com.sap.ui5datatest-ui-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: com.sap.ui5datatest-html-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - dist/ui5datatestapp-content.zip
+          name: ui5datatestapp
+          target-path: resources/
+  - name: ui5datatestapp
+    type: html5
+    path: ui5datatestapp
+    build-parameters:
+      supported-platforms: []
+resources:
+  - name: com.sap.ui5datatest-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-name: com.sap.ui5datatest-destination-service
+      service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        version: 0.0.1
+  - name: com.sap.ui5datatest-html-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+      service-keys:
+        - name: com.sap.ui5datatest-html-repo-host-key
+  - name: com.sap.ui5datatest-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-plan: application
+      service-keys:
+        - name: com.sap.ui5datatest-auth-key

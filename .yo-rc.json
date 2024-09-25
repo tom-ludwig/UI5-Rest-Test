@@ -1,0 +1,14 @@
+{
+  "generator-ui5-project": {
+    "namespaceUI5": "com.sap",
+    "projectName": "ui5datatest",
+    "uimoduleName": "ui5datatestapp",
+    "enableFPM": false,
+    "platform": "SAP Build Work Zone, standard edition",
+    "tileName": "ui5datatestapp",
+    "ui5Libs": "Local resources (SAPUI5)",
+    "newDir": true,
+    "initRepo": true,
+    "projectId": "com.sap.ui5datatest"
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "name": "com.sap.ui5datatest",
+    "scripts": {
+        "build": "mbt build --mtar com.sap.ui5datatest.mtar",
+        "build:workspaces": "npm run build --workspaces --if-present",
+        "deploy": "cf deploy mta_archives/com.sap.ui5datatest.mtar --retries 0",
+        "lint": "npm run lint --workspaces --if-present",
+        "ui5lint": "npm run ui5lint --workspaces --if-present",
+        "start:ui5datatestapp": "npm start --workspace ui5datatestapp"
+    },
+    "dependencies": {
+        "mbt": "^1"
+    },
+    "workspaces": [
+        "ui5datatestapp"
+    ]
+}
