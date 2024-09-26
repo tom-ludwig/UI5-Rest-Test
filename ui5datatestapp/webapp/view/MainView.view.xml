@@ -1,7 +1,27 @@
 <mvc:View controllerName="ui5datatestapp.controller.MainView"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <content />
+        <content>
+            <SearchField liveChange=".onSearch" placeholder="Search Cart" />
+            <Button text="Navigate to Account" press=".onNavigateToAccount" />
+            <List
+                id="itemList"
+                items="{
+                 path: 'shoppingItemsModel>/items'
+              }">
+                <StandardListItem
+                    id="ListItem"
+                    title=" {shoppingItemsModel>name}"
+                    description="{shoppingItemsModel>description}"
+                    type="Navigation"
+                    icon="sap-icon://cart"
+                    press=".onNavigateToDetailShoppingView" />
+            </List>
+        </content>
     </Page>
 </mvc:View>

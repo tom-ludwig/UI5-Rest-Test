@@ -5,10 +5,12 @@
     "uimoduleName": "ui5datatestapp",
     "enableFPM": false,
     "platform": "SAP Build Work Zone, standard edition",
-    "tileName": "ui5datatestapp",
     "ui5Libs": "Local resources (SAPUI5)",
     "newDir": true,
     "initRepo": true,
-    "projectId": "com.sap.ui5datatest"
+    "projectId": "com.sap.ui5datatest",
+    "uimodules": [
+      "ui5datatestapp"
+    ]
   }
 }

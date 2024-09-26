@@ -1,0 +1,20 @@
+<mvc:View controllerName="ui5datatestapp.controller.ShoppingDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Text id="text" text="This is the detail view" />
+            <Text text="{shoppingItemsModel>items/name}" />
+            <!--<VBox>-->
+            <!--    <items>-->
+            <!--        <Text text="Product Description: {/name}" />-->
+            <!--        <Text text="Product Description: {/description}" />-->
+            <!--    </items>-->
+            <!--</VBox>-->
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,33 @@
+<mvc:View controllerName="ui5datatestapp.controller.AccountView"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <f:Form id="form">
+                <f:title>
+                    <core:Title id="CoreTitle" text="User" />
+                </f:title>
+                <f:layout>
+                    <f:ResponsiveGridLayout id="ResponsiveGridLayout" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer id="FormContainer">
+                        <f:formElements>
+                            <f:FormElement id="FormElement">
+                                <f:fields>
+                                    <Input id="userNameInputField" placeholder="Username" />
+                                    <Button id="button" text="Save" press="onUserSaved" />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+            <Text id="text" text="{userModel>/name}" />
+        </content>
+    </Page>
+</mvc:View>
