@@ -1,4 +1,5 @@
-<mvc:View controllerName="ui5datatestapp.controller.ShoppingDetail"
+<mvc:View
+    controllerName="ui5datatestapp.controller.ShoppingDetail"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns:layout="sap.ui.layout"
@@ -7,14 +8,10 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
-            <Text id="text" text="This is the detail view" />
-            <Text text="{shoppingItemsModel>items/name}" />
-            <!--<VBox>-->
-            <!--    <items>-->
-            <!--        <Text text="Product Description: {/name}" />-->
-            <!--        <Text text="Product Description: {/description}" />-->
-            <!--    </items>-->
-            <!--</VBox>-->
+            <VBox>
+                <Text id="text5" text="This is the detail view" />
+                <Text id="text8" text="This is a test: {shoppingItemsModel>name}" />
+            </VBox>
         </content>
     </Page>
 </mvc:View>

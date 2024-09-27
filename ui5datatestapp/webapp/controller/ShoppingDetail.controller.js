@@ -18,14 +18,13 @@ sap.ui.define(
 
       _onObjectMatched: function (oEvent) {
         console.log("Object matched");
-        var sItemID = oEvent.getParameter("arguments").itemID;
+        var sItemID = "/items/ + oEvent.getParameter("arguments").itemID;
         console.log(sItemID);
 
         this.getView().bindElement({
           path: sItemID,
           model: "shoppingItemsModel",
         });
-
         //var oModel = this.getView().getModel();
         //var oItemData = oModel
         //  .getProperty("/items")

@@ -11,12 +11,10 @@
             <Button text="Navigate to Account" press=".onNavigateToAccount" />
             <List
                 id="itemList"
-                items="{
-                 path: 'shoppingItemsModel>/items'
-              }">
+                items="{shoppingItemsModel>/items}">
                 <StandardListItem
                     id="ListItem"
-                    title=" {shoppingItemsModel>name}"
+                    title="{shoppingItemsModel>name}"
                     description="{shoppingItemsModel>description}"
                     type="Navigation"
                     icon="sap-icon://cart"
