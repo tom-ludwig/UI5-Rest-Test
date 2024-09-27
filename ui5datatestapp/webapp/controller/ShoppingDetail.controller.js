@@ -18,7 +18,7 @@ sap.ui.define(
 
       _onObjectMatched: function (oEvent) {
         console.log("Object matched");
-        var sItemID = "/items/ + oEvent.getParameter("arguments").itemID;
+        var sItemID = '/items/ + oEvent.getParameter("arguments").itemID';
         console.log(sItemID);
 
         this.getView().bindElement({
