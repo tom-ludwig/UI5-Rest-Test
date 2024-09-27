@@ -20,6 +20,13 @@
                     icon="sap-icon://cart"
                     press=".onNavigateToDetailShoppingView" />
             </List>
+            <Input id="name" placeholder="Enter new item" width="80%"  />
+            <Input id="description" placeholder="Enter description" width="80%" />
+            <Input id="price" placeholder="Enter price" width="80%" />
+
+            <Input id="quantity" placeholder="Enter quantity" width="80%" />
+            <Input id="image" placeholder="Enter image url" width="80%"/>
+            <Button text="Create" press="onAddItem" />
         </content>
     </Page>
 </mvc:View>

@@ -32,11 +32,17 @@ sap.ui.define(
               id: "e3ec7ba8-5ebb-4014-80ba-46a877035f28",
               name: "Item 1",
               description: "Description 1",
+              price: 1,
+              quantity: 1,
+              image_url: "https://via.placeholder.com/150",
             },
             {
               id: "8d3d415c-bb80-40a3-956f-037793f85200",
               name: "Item 2",
-              description: "Description 2",
+              description: "Description 1",
+              price: 1,
+              quantity: 1,
+              image_url: "https://via.placeholder.com/150",
             },
           ],
         });
