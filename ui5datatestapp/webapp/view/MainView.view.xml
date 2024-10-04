@@ -12,20 +12,36 @@
             <List
                 id="itemList"
                 items="{shoppingItemsModel>/items}">
-                <StandardListItem
-                    id="ListItem"
-                    title="{shoppingItemsModel>name}"
-                    description="{shoppingItemsModel>description}"
-                    type="Navigation"
-                    icon="sap-icon://cart"
-                    press=".onNavigateToDetailShoppingView" />
+
+                <CustomListItem id="customListItem" type="Navigation"
+                    press=".onNavigateToDetailShoppingView">
+                    <HBox>
+                        <!-- Displaying the image -->
+                        <Image src="{shoppingItemsModel>image_url}" width="100px" height="100px" />
+
+                        <!-- Displaying other details in a vertical layout -->
+                        <VBox>
+                            <Text text="{shoppingItemsModel>title}" />
+                            <Text text="{shoppingItemsModel>description}" />
+                            <Text text="Price: {shoppingItemsModel>price} USD" />
+                            <Text text="Quantity: {shoppingItemsModel>quantity}" />
+                        </VBox>
+                    </HBox>
+                </CustomListItem>
+                <!--<StandardListItem-->
+                <!--    id="ListItem"-->
+                <!--    title="{shoppingItemsModel>title}"-->
+                <!--    description="{shoppingItemsModel>description}"-->
+                <!--    type="Navigation"-->
+                <!--    icon="sap-icon://cart"-->
+                <!--    press=".onNavigateToDetailShoppingView" />-->
             </List>
-            <Input id="name" placeholder="Enter new item" width="80%"  />
+            <Input id="name" placeholder="Enter new item" width="80%" />
             <Input id="description" placeholder="Enter description" width="80%" />
             <Input id="price" placeholder="Enter price" width="80%" />
 
             <Input id="quantity" placeholder="Enter quantity" width="80%" />
-            <Input id="image" placeholder="Enter image url" width="80%"/>
+            <Input id="image" placeholder="Enter image url" width="80%" />
             <Button text="Create" press="onAddItem" />
         </content>
     </Page>

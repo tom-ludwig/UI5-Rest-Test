@@ -18,21 +18,27 @@ sap.ui.define(
           url: "http://0.0.0.0:8080/shopping_items/items",
           method: "GET",
           success: function (data) {
+            console.log(data);
             oData.items = data;
             oModel.updateBindings();
-
           },
           error: function (jqXHR, textStatus, errorThrown) {
-              console.log("Error loading data from API.");
-            }
+            console.log("Error loading data from API.");
+          },
         });
       },
 
       onAddItem: function () {
         const sNewItemTitle = this.getView().byId("name").getValue();
-        const sNewItemDescription = this.getView().byId("description").getValue();
-        const sNewItemPrice = parseFloat(this.getView().byId("price").getValue());
-        const sNewItemQuantity = parseInt(this.getView().byId("quantity").getValue());
+        const sNewItemDescription = this.getView()
+          .byId("description")
+          .getValue();
+        const sNewItemPrice = parseFloat(
+          this.getView().byId("price").getValue(),
+        );
+        const sNewItemQuantity = parseInt(
+          this.getView().byId("quantity").getValue(),
+        );
         const sNewItemImageUrl = this.getView().byId("image").getValue();
 
         const object = {
@@ -41,8 +47,9 @@ sap.ui.define(
           price: sNewItemPrice,
           quantity: sNewItemQuantity,
           image_url: sNewItemImageUrl,
-        }
+        };
 
+        console.log(object);
 
         // Add item to the API
         jQuery.ajax({
@@ -54,36 +61,13 @@ sap.ui.define(
           success: function () {
             console.log("Item added");
           },
-          error: function () {
-           console.log("Failed to add item. Please try again.");
-          }
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.error("Failed to add item. Error details:");
+            console.error("Status: " + textStatus); // Logs the status (e.g., "error", "timeout")
+            console.error("Error Thrown: " + errorThrown); // Logs any exception object thrown
+            console.error("Response Text: " + jqXHR.responseText); // Logs the full response from the server
+          },
         });
-
-
-        if (sNewItemName) {
-          const oItemsModel = this.getView().getModel("items");
-          const aItems = oItemsModel.getProperty("/items") || [];
-
-          // Add item to the API
-          jQuery.ajax({
-            // eslint-disable-next-line fiori-custom/sap-no-hardcoded-url
-            url: "http://0.0.0.0:3000/items",
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(oNewItem),
-            success: function () {
-              aItems.push(oNewItem);
-              oItemsModel.setProperty("/items", aItems);
-              oNewItemModel.setProperty("/name", "");
-              MessageToast.show(`Item ${sNewItemName} added.`);
-            },
-            error: function () {
-              MessageToast.show("Failed to add item. Please try again.");
-            }
-          });
-
-          MessageToast.show(`Item ${sNewItemName} added.`);
-        }
       },
 
       onUserSaved: function () {

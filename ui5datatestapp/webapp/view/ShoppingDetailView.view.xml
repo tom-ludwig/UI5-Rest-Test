@@ -10,7 +10,7 @@
         <content>
             <VBox>
                 <Text id="text5" text="This is the detail view" />
-                <Text id="text8" text="This is a test: {shoppingItemsModel>name}" />
+                <Text id="text8" text="This is a test: {shoppingItemsModel>title}" />
             </VBox>
         </content>
     </Page>
